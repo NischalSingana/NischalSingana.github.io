@@ -5,81 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nischal Singana - Portfolio</title>
   <style>
+    /* Reset & base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #1c1c1c, #2b2b2b);
-      color: #f5f5f5;
+      background: #0a0a0a;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
     }
 
-    .card {
-      background: #333;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      text-align: center;
-      max-width: 400px;
-      animation: fadeIn 1.2s ease-in;
+    .container {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 60px rgba(0, 255, 255, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
 
-    .avatar {
+    .container:hover {
+      transform: rotateX(3deg) rotateY(3deg);
+      box-shadow: 0 0 80px rgba(0, 255, 255, 0.3);
+    }
+
+    img.profile {
+      width: 140px;
       border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border: 3px solid #fff;
-      margin-bottom: 1rem;
+      border: 3px solid #0ff;
+      box-shadow: 0 0 15px #0ff;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    img.profile:hover {
+      transform: scale(1.05) rotate(3deg);
     }
 
     h1 {
-      font-size: 1.6rem;
-      margin: 0.5rem 0;
+      color: #0ff;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
-    p {
-      font-size: 1rem;
+    p.subtitle {
+      font-size: 1.1rem;
       color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin: 30px 0;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      color: #00e6e6;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 15px;
+    }
+
+    ul li::before {
+      content: "⮞ ";
+      color: #0ff;
     }
 
     a {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #4fc3f7;
+      color: #00ffff;
       text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #ffffff;
+    }
+
+    .links {
+      margin-top: 15px;
+    }
+
+    .links a {
+      margin-right: 15px;
       font-weight: bold;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card" id="profile">
-    <p>Loading profile...</p>
-  </div>
+  <div class="container" id="main">
+    <div style="text-align: center;">
+      <img src="profile.jpg" alt="Nischal's avatar" class="profile"/>
+      <h1>Nischal Singana</h1>
+      <p class="subtitle">B.Tech CSE Student | Web Developer | Peer Mentor</p>
+      <div class="links">
+        <a href="https://github.com/NischalSingana" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/singananischal/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
 
-  <script>
-    fetch("https://api.github.com/users/NischalSingana")
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("profile").innerHTML = `
-          <img src="${data.avatar_url}" alt="Nischal's Avatar" class="avatar" />
-          <h1>${data.name}</h1>
-          <p>${data.bio || "Aspiring Developer 🚀"}</p>
-          <p>Public Repositories: ${data.public_repos}</p>
-          <a href="${data.html_url}" target="_blank">View GitHub Profile →</a>
-        `;
-      })
-      .catch(err => {
-        document.getElementById("profile").innerHTML = "<p>Failed to load GitHub data.</p>";
-        console.error(err);
-      });
-  </script>
+    <div class="section">
+      <h2>About Me</h2>
+      <p>
+        I’m a Computer Science Engineering student passionate about web development, DevOps, and learning modern technologies.
+        I contribute to open-source and enjoy building meaningful projects.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Education</h2>
+      <p><strong>Bachelor of Technology (B.Tech)</strong> in Computer Science and Engineering<br/>
+      — Expected Graduation: 202</p>
+    </div>
+
+<div class="section">
+  <h2>Highlighted Projects</h2>
+  <ul>
+    <li>
+      <a href="https://foodies-delight-proj.vercel.app/" target="_blank">
+        Foodies Delight
+      </a> – A recipe website built with HTML, CSS and JavaScript showcasing popular Indian dishes.
+    </li>
+    <li>
+      <a href="https://weather-api-s-nischals-projects.vercel.app/" target="_blank">
+        Weather API App
+      </a> – A web app that fetches real-time weather data using OpenWeatherMap API.
+    </li>
+  </ul>
+</div>
+
+
+    <div class="section">
+      <h2>Skills</h2>
+      <p>HTML, CSS, JavaScript, Git, GitHub, Linux, Java, C, C++</p>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:singananischal@gmail.com">singananischal@gmail.com</a></p>
+    </div>
+  </div>
 </body>
 </html>
